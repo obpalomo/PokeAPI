@@ -24,17 +24,31 @@ const fetchPokemonDetails = async (url) => {
   }
 };
 
-const filterButtons = document.querySelectorAll(".filter-button");
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const typeFilter = button.getAttribute("data-type");
-    addPokemonList(typeFilter);
-  });
+
+
+// Nueva sección de código para el evento de búsqueda
+const buscarButton = document.querySelector("#buscarButton");
+const miInput = document.querySelector("#miInput");
+
+miInput.addEventListener("input", function () {
+  const searchTerm = miInput.value.toLowerCase();
+  filterBySearch(searchTerm);
 });
+
+buscarButton.addEventListener("click", function () {
+  const searchTerm = miInput.value.toLowerCase();
+  filterBySearch(searchTerm);
+});
+
+// Función para filtrar por búsqueda
+const filterBySearch = (searchTerm) => {
+  addPokemonList(searchTerm);
+};
+
+
 
 const addPokemonList = async (typeFilter = "all") => {
   const container = document.querySelector(".pokemon-list");
-
   container.innerHTML = "";
 
   try {
@@ -42,11 +56,13 @@ const addPokemonList = async (typeFilter = "all") => {
     const pokemonList = data.results;
     /* console.log(pokemonList); */
 
+
     for (let i = 0; i < pokemonList.length; i++) {
       const pokemonDetails = await fetchPokemonDetails(pokemonList[i].url);
       const abilities = pokemonDetails.abilities.map(
         (ability) => ability.ability.name
       );
+
       /* console.log(pokemonDetails); */
 
       // Crear un elemento para cada Pokémon
@@ -61,6 +77,13 @@ const addPokemonList = async (typeFilter = "all") => {
         i + 1
       }.svg`;
       pokemonImage.alt = pokemonList[i].name;
+
+      //Pokeball
+
+      const pokeballImage = document.createElement("img");
+      pokeballImage.src = "./fotos/pokeball.png";
+      pokeballImage.alt = "Pokeball";
+      pokeballImage.classList.add("pokeball-image");
 
       // Name
       const pokemonNameID = document.createElement("span");
@@ -107,6 +130,7 @@ const addPokemonList = async (typeFilter = "all") => {
       pokemonElement.appendChild(pokemonImage);
       pokemonElement.appendChild(pokemonNameID);
       pokemonElement.appendChild(pokemonTypes);
+      pokemonElement.appendChild(pokeballImage);
       /* pokemonElement.appendChild(abilitiesList); */
 
       /* container.appendChild(pokemonElement); */
@@ -124,6 +148,9 @@ const addPokemonList = async (typeFilter = "all") => {
   }
 };
 
+addPokemonList();
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const filterButtons = document.querySelectorAll(".filter-button");
   filterButtons.forEach((button) => {
@@ -133,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  addPokemonList();
+ /*  addPokemonList(); */
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -146,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+/* document.addEventListener("DOMContentLoaded", function () {
   const pokemonImage = document.getElementById("pokemonImage");
 
   pokemonImage.addEventListener("click", function () {
@@ -156,7 +183,8 @@ document.addEventListener("DOMContentLoaded", function () {
       pokemonImage.classList.remove("animate");
     }, 300);
   });
-});
+}); */
+
 
 
 

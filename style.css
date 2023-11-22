@@ -6,26 +6,31 @@
 
 header{
   text-align: center;
-  width: 85%;
+  width: 100%;
+}
+
+body{
+  background: linear-gradient(to right, #d38080, #d6aebb);
+  margin: 0;
 }
 
 .container{
-  width: 85%;
+  width: 100%;
   text-align: center;
 }
 
 .pokemon-logo {
   width: 415px;
-  margin-left: 32px;
 }
 
 .pokemon-list {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(3, 33%);
   margin: 5px;
   justify-items: center;
-  width: 85%;
-  margin-top: 25px; 
+  margin-top: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .pokemon-item {
@@ -38,10 +43,14 @@ header{
   border-radius: 81px;
   flex-direction: column;
   margin: 5px;
-  width: 243px;
-  height: 227px;
+  width: 195px;
+  height: 250px;
   justify-content: flex-start;
+  background: linear-gradient(#ee3f3f 65%, #e5e4de 50%);
+  color: white;
+  margin-right: 40px;
 }
+
 
 .pokemon-item:hover {
   transform: scale(1.1);
@@ -141,8 +150,11 @@ span{
 
 .filter-nav {
   display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
+  padding: 20px;
+  justify-content: center;
+  grid-template-columns: repeat(5,19%);
+  flex-wrap: wrap;
+  margin: 20px 60px 20px 60px;
 }
 
 .filter-button {
@@ -157,19 +169,12 @@ span{
 .filter-button:hover {
   background-color: #005418;
 }
-.sidebar {
-  width: 80%;
+/* .sidebar {
+  width: 100%;
   color: white;
   text-align: center;
-  margin-left: 48px;
-}
-.filter-nav {
-  display: flex;
-  padding: 20px;
-  justify-content: start;
-  grid-template-columns: repeat(5,19%);
-  flex-wrap: wrap;
-}
+} */
+
 .filter-button {
   margin-bottom: 10px;
   padding: 8px 16px;
@@ -177,7 +182,9 @@ span{
   border-radius: 21px;
   color: white;
   cursor: pointer;
-  width: 85px;
+  width: 141px;
+  display: flex;
+  justify-content: center;
 }
 
 .filter-button:hover {
@@ -207,6 +214,12 @@ span{
   60% {
     transform: translateY(-7px);
   }
+}
+
+.pokeball-image {
+  width: 30px; 
+  height: 30px; 
+  margin-top: 5px; 
 }
 
 

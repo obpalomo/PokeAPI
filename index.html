@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./pokedex2.js" defer></script>
+    <script src="./pokedex.js" defer></script>
     <link rel="stylesheet" href="./style.css" />
     <title>PokeAPI</title>
   </head>
@@ -15,7 +15,7 @@
     />
   </header>
   <body>
-    <aside class="sidebar">
+    <!-- <aside class="sidebar"> -->
       <nav class="filter-nav">
         <button class="filter-button" data-type="normal">Normal</button>
         <button class="filter-button" data-type="fire">Fire</button>
@@ -35,9 +35,9 @@
         <button class="filter-button" data-type="dark">Dark</button>
         <button class="filter-button" data-type="steel">Steel</button>
         <button class="filter-button" data-type="fairy">Fairy</button>
-        <button class="filter-button" data-type="all">All</button>
+        <button class="filter-button active-filter" data-type="all">All</button>
       </nav>
-    </aside>
+    <!-- </aside> -->
     <main>
       <div class="container">
         <div class="search-container">
@@ -45,7 +45,8 @@
           <button type="submit" id="buscarButton">Buscar</button>
         </div>
       </div>
-      <div class="pokemon-list"></div>
+      <div class="pokemon-list" id="pokemonList"></div>
     </main>
   </body>
 </html>
+
