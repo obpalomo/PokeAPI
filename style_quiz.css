@@ -1,0 +1,98 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #282c35;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  header {
+    background-color: #61dafb;
+    color: #282c35;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  main {
+    max-width: 500px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .pokemon-logo{
+    width: 80%;
+  }
+  h2 {
+    color: #61dafb;
+  }
+
+  #startQuizButton{
+    background-color: #61dafb;
+    color: #282c35;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+  }
+  
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .option {
+    background-color: #61dafb;
+    color: #282c35;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .option:hover {
+    background-color: #4fa3d1;
+  }
+  
+  #answerInput {
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    border: 2px solid #61dafb;
+    border-radius: 8px;
+    color: #282c35;
+    background-color: #fff;
+    transition: border-color 0.3s;
+  }
+  
+  #answerInput:focus {
+    outline: none;
+    border-color: #4fa3d1;
+  }
+  
+  #submitBtn {
+    background-color: #61dafb;
+    color: #282c35;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+  }
+  
+  #submitBtn:hover {
+    background-color: #4fa3d1;
+  }

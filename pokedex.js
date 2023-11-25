@@ -22,6 +22,56 @@ const fetchPokemonDetails = async (url) => {
   }
 };
 
+//NUEVO
+const fetchPokemonAttacks = async (pokemonId) => {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+    const data = await response.json();
+    return data.moves.slice(0, 5); // Obtener los primeros 5 ataques (ajusta según sea necesario)
+  } catch (error) {
+    console.error("Error al obtener ataques:", error);
+    return [];
+  }
+};
+//NUEVO
+//NUEVO
+const showPokemonDetails = async (details) => {
+  if (!details) {
+    return; // Evitar que se ejecute si no hay detalles
+  }
+
+  const modalTitle = document.getElementById("modalTitle");
+  const modalImage = document.getElementById("modalImage");
+  const modalDetails = document.getElementById("modalDetails");
+
+  // Llenar los elementos con los detalles del Pokémon
+  modalTitle.textContent = details.name.charAt(0).toUpperCase() + details.name.slice(1);
+  modalImage.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${details.id}.svg`;
+  modalImage.alt = details.name;
+
+  // Obtener los ataques del Pokémon
+  const attacks = await fetchPokemonAttacks(details.id);
+  const attacksList = attacks.map((attack) => attack.move.name);
+
+  // Mostrar detalles adicionales
+  modalDetails.innerHTML = `
+    Altura: ${details.height} | Peso: ${details.weight} <br>
+    <strong>Ataques:</strong> ${attacksList.join(", ")}
+  `;
+
+  // Mostrar el modal
+  const modal = document.getElementById("pokemonModal");
+  modal.style.display = "block";
+};
+//NUEVO
+
+//NUEVO
+const closeModal = () => {
+  const modal = document.getElementById("pokemonModal");
+  modal.style.display = "none";
+};
+//NUEVO
+
 const addPokemonList = async (typeFilter = "all", searchTerm = "") => {
   const container = document.querySelector(".pokemon-list");
   container.innerHTML = "";
@@ -42,9 +92,7 @@ const addPokemonList = async (typeFilter = "all", searchTerm = "") => {
       ({ pokemon, details }) => {
         const matchesType =
           typeFilter === "all" ||
-          details.types.some(
-            (t) => t.type.name.toLowerCase() === typeFilter
-          );
+          details.types.some((t) => t.type.name.toLowerCase() === typeFilter);
 
         const matchesSearch =
           searchTerm === "" ||
@@ -85,13 +133,20 @@ const filterAndUniquePokemonList = (pokemonList, typeFilter, searchTerm) => {
   return uniqueList;
 };
 
-
-
 const createPokemonElement = (pokemon, details) => {
   const pokemonElement = document.createElement("div");
   pokemonElement.classList.add("pokemon-item");
+  pokemonElement.classList.add("backInLeft");
+  //NUEVO
+  pokemonElement.dataset.details = JSON.stringify(details);
+  //NUEVO
 
   const pokemonImage = document.createElement("img");
+  //NUEVO
+  pokemonImage.addEventListener("click", () => {
+    showPokemonDetails(details);
+  });
+  //NUEVO
   pokemonImage.classList.add("pokemon-image", "clickable");
   pokemonImage.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${details.id}.svg`;
   pokemonImage.alt = pokemon.name;
@@ -128,6 +183,18 @@ const createPokemonElement = (pokemon, details) => {
   pokemonElement.appendChild(pokemonTypes);
   pokemonElement.appendChild(pokeballImage);
 
+  /*   //Nuevo
+  // Agrega un manejador de eventos de clic al elemento del Pokémon
+  pokemonElement.addEventListener("click", () => {
+    // Llama a la función para mostrar detalles
+    showPokemonDetails(details);
+  });
+  //Nuevo */
+
+  pokemonElement.addEventListener("click", () => {
+    showPokemonDetails(details);
+  });
+
   return pokemonElement;
 };
 
@@ -154,21 +221,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-/*   const buscarButton = document.querySelector("#buscarButton");
-  buscarButton.addEventListener("click", () => {
-    const searchTerm = document.querySelector("#miInput").value.trim();
-    addPokemonList("all", searchTerm);
-  }); */
-
   const miInput = document.querySelector("#miInput");
   miInput.addEventListener("input", () => {
     const searchTerm = miInput.value.trim();
     addPokemonList("all", searchTerm);
   });
 
-  addPokemonList(); // Asegúrate de que esta línea esté presente
-});
+  addPokemonList();
 
+  // NUEVO
+  const pokemonListContainer = document.querySelector(".pokemon-list");
+  pokemonListContainer.addEventListener("click", (event) => {
+    const clickedPokemon = event.target.closest(".pokemon-item");
+    if (clickedPokemon) {
+      const pokemonDetails = JSON.parse(clickedPokemon.dataset.details);
+      showPokemonDetails(pokemonDetails);
+      //NUEVO
+    }
+  });
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   const menuButtons = document.querySelectorAll(".filter-button");
@@ -204,3 +275,5 @@ const getTypeColor = (type) => {
 
   return typeColors[type] || "#B0B0B0";
 };
+
+

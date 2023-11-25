@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="./quiz.js" defer></script>
+  <link rel="stylesheet" href="./style_quiz.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+  <title>PokeAPI Quiz</title>
+</head>
+<body>
+  <header>
+    <img class="pokemon-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png" alt="Pokemon Logo" />
+  </header>
+  <main class="quiz-container">
+    <h2>¡Cuestionario Pokémon!</h2>
+    <button id="startQuizButton" onclick="startQuiz()">Comenzar Cuestionario</button> <!-- Nuevo botón -->
+    <p id="question"></p>
+    <div id="options" class="quiz-options"></div>
+    <button id="submitBtn" onclick="submitAnswer()" disabled>Enviar respuesta</button>
+    <div id="quizResults"></div> <!-- Nuevo elemento para mostrar los resultados -->
+  </main>
+
+  <script src="./quiz.js" defer></script>
+</body>
+</html>

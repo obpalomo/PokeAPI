@@ -1,52 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./pokedex.js" defer></script>
-    <link rel="stylesheet" href="./style.css" />
-    <title>PokeAPI</title>
-  </head>
-  <header>
-    <img
-      class="pokemon-logo"
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png"
-      alt="Pokemon Logo"
-    />
-  </header>
-  <body>
-    <!-- <aside class="sidebar"> -->
-      <nav class="filter-nav">
-        <button class="filter-button" data-type="normal">Normal</button>
-        <button class="filter-button" data-type="fire">Fire</button>
-        <button class="filter-button" data-type="water">Water</button>
-        <button class="filter-button" data-type="electric">Electric</button>
-        <button class="filter-button" data-type="grass">Grass</button>
-        <button class="filter-button" data-type="ice">Ice</button>
-        <button class="filter-button" data-type="fighting">Fighting</button>
-        <button class="filter-button" data-type="poison">Poison</button>
-        <button class="filter-button" data-type="ground">Ground</button>
-        <button class="filter-button" data-type="flying">Flying</button>
-        <button class="filter-button" data-type="psychic">Psychic</button>
-        <button class="filter-button" data-type="bug">Bug</button>
-        <button class="filter-button" data-type="rock">Rock</button>
-        <button class="filter-button" data-type="ghost">Ghost</button>
-        <button class="filter-button" data-type="dragon">Dragon</button>
-        <button class="filter-button" data-type="dark">Dark</button>
-        <button class="filter-button" data-type="steel">Steel</button>
-        <button class="filter-button" data-type="fairy">Fairy</button>
-        <button class="filter-button active-filter" data-type="all">All</button>
-      </nav>
-    <!-- </aside> -->
-    <main>
-      <div class="container">
-        <div class="search-container">
-          <input type="text" id="miInput" placeholder="Busca tu Pokemon" />
-          <button type="submit" id="buscarButton">Buscar</button>
-        </div>
-      </div>
-      <div class="pokemon-list" id="pokemonList"></div>
-    </main>
-  </body>
-</html>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="./pokedex.js" defer></script>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+  <title>PokeAPI</title>
+</head>
+
+<body>
+  <header>
+    <img class="pokemon-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png"
+      alt="Pokemon Logo" />
+  </header>
+
+  <nav class="filter-nav">
+    <button class="filter-button" data-type="normal">Normal</button>
+    <button class="filter-button" data-type="fire">Fire</button>
+    <button class="filter-button" data-type="water">Water</button>
+    <button class="filter-button" data-type="electric">Electric</button>
+    <button class="filter-button" data-type="grass">Grass</button>
+    <button class="filter-button" data-type="ice">Ice</button>
+    <button class="filter-button" data-type="fighting">Fighting</button>
+    <button class="filter-button" data-type="poison">Poison</button>
+    <button class="filter-button" data-type="ground">Ground</button>
+    <button class="filter-button" data-type="flying">Flying</button>
+    <button class="filter-button" data-type="psychic">Psychic</button>
+    <button class="filter-button" data-type="bug">Bug</button>
+    <button class="filter-button" data-type="rock">Rock</button>
+    <button class="filter-button" data-type="ghost">Ghost</button>
+    <button class="filter-button" data-type="dragon">Dragon</button>
+    <button class="filter-button" data-type="dark">Dark</button>
+    <button class="filter-button" data-type="steel">Steel</button>
+    <button class="filter-button" data-type="fairy">Fairy</button>
+    <button class="filter-button active-filter" data-type="all">All</button>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="search-container">
+        <input type="text" id="miInput" placeholder="Busca tu Pokemon" />
+        <button type="submit" id="buscarButton">Buscar</button>
+      </div>
+      <button id="quizButton" onclick="goToQuiz()">¡Desafía tu conocimiento Pokémon!</button>  
+    </div>
+
+    <div class="pokemon-list" id="pokemonList"></div>
+
+    <div id="pokemonModal" class="modal">
+      <div id="modalContent" class="modal-content">
+        <!-- Contenido principal del modal -->
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalMainContent">
+          <h2 id="modalTitle"></h2>
+          <img id="modalImage" alt="Pokemon" />
+          <!-- Otro contenido principal del modal -->
+        </div>
+        <!-- Detalles del modal debajo -->
+        <div id="modalDetails"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="./pokedex.js" defer></script>
+
+  <script>
+    // Función para ir al cuestionario
+    function goToQuiz() {
+      window.location.href = "./quiz.html";
+    }
+  </script>
+
+</body>
+
+</html>
