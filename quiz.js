@@ -6,6 +6,12 @@ const quizData = [
       correctAnswer: "Eléctrico",
     },
     {
+      type: "tipo",
+      question: "¿Cuál es el tipo principal de Charizard?",
+      options: ["Fuego", "Agua", "Eléctrico", "Planta"],
+      correctAnswer: "Fuego",
+    },
+    {
       type: "lider",
       question: "¿Quién es el líder del Gimnasio de Ciudad Plateada?",
       options: ["Brock", "Misty", "Erika", "Lt. Surge"],
@@ -28,6 +34,12 @@ const quizData = [
       question: "¿Cuál es el profesor Pokémon que te da tu primer Pokémon?",
       options: ["Profesor Oak", "Profesor Elm", "Profesor Birch", "Profesor Rowan"],
       correctAnswer: "Profesor Oak",
+    },
+    {
+      type: "rival",
+      question: "¿Quién es el rival de Ash en la región de Hoenn?",
+      options: ["Gary Oak", "May", "Dawn", "Paul"],
+      correctAnswer: "May",
     },
     // Pregunta de adivinar el nombre del Pokémon según la imagen
     {

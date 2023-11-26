@@ -44,21 +44,18 @@
         <input type="text" id="miInput" placeholder="Busca tu Pokemon" />
         <button type="submit" id="buscarButton">Buscar</button>
       </div>
-      <button id="quizButton" onclick="goToQuiz()">¡Desafía tu conocimiento Pokémon!</button>  
+      <button id="quizButton" onclick="goToQuiz()">¡Desafía tu conocimiento Pokémon!</button>
     </div>
 
     <div class="pokemon-list" id="pokemonList"></div>
 
     <div id="pokemonModal" class="modal">
       <div id="modalContent" class="modal-content">
-        <!-- Contenido principal del modal -->
         <span class="close" onclick="closeModal()">&times;</span>
         <div id="modalMainContent">
           <h2 id="modalTitle"></h2>
           <img id="modalImage" alt="Pokemon" />
-          <!-- Otro contenido principal del modal -->
         </div>
-        <!-- Detalles del modal debajo -->
         <div id="modalDetails"></div>
       </div>
     </div>
