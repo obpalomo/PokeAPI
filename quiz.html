@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="./quiz.js" defer></script>
+  <script src="./quiz2.js" defer></script>
   <link rel="stylesheet" href="./style_quiz.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
   <title>PokeAPI Quiz</title>
@@ -14,13 +14,14 @@
   </header>
   <main class="quiz-container">
     <h2>¡Cuestionario Pokémon!</h2>
-    <button id="startQuizButton" onclick="startQuiz()">Comenzar Cuestionario</button> <!-- Nuevo botón -->
+    <button id="quizButton">Comenzar Cuestionario</button> <!-- Nuevo botón -->
     <p id="question"></p>
     <div id="options" class="quiz-options"></div>
-    <button id="submitBtn" onclick="submitAnswer()" disabled>Enviar respuesta</button>
+    <button id="submitBtn" style="display: none;">Enviar respuesta</button>
+    <p id="feedback"></p>
     <div id="quizResults"></div> <!-- Nuevo elemento para mostrar los resultados -->
   </main>
 
-  <script src="./quiz.js" defer></script>
+  <script src="./quiz2.js"></script>
 </body>
 </html>
